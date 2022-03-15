@@ -1,6 +1,5 @@
-#include <Arduino.h>
+#include <data.h>
 #include <Wire.h>
-#include "AHT10.h"
 
 static const uint8_t AHT10_ADDR = 0x38;
 

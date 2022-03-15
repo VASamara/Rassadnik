@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include "DS3231.h"
+#include <data.h>
 
 static const uint8_t DS3231_ADDR = 0x68;
 
