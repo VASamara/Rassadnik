@@ -8,6 +8,7 @@ DS3231 rtc;
 Sun sun;
 Heat heat;
 MicroDS18B20<DALLAS_1> ds;
+elapsedSeconds timeBackLight;
 
 void setup()
 {
@@ -16,6 +17,7 @@ void setup()
 
   lcd.init();
   lcd.backlight();
+  timeBackLight = 0;
   Serial.begin(115200);
   Wire.begin();
   enc.getState();
@@ -23,13 +25,15 @@ void setup()
 }
 void loop()
 {
-heat.Heating();
-sun.Lighting();
+  heat.Heating();
+  sun.Lighting();
 
   enc.tick();
 
   if (enc.right() or enc.left())
   {
+    lcd.backlight();
+    timeBackLight = 0;
     enc.counter = constrain(enc.counter, 0, 3);
 
     switch (enc.counter)
@@ -46,18 +50,19 @@ sun.Lighting();
     case 3:
       menu.Heating();
       break;
-    
     }
   }
   if (enc.click())
   {
-
+    lcd.backlight();
+    timeBackLight = 0;
     if (enc.counter == 1)
       menu.DateTimeSet();
     if (enc.counter == 2)
       menu.LightingSet();
     if (enc.counter == 3)
       menu.HeatingSet();
-   
   }
+  if (timeBackLight >= 300)
+    lcd.noBacklight();
 }

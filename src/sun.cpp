@@ -8,7 +8,7 @@ uint8_t bright;
 void Sun::Lighting()
 {
 
-    if ((rtc.getHour() >= EEPROM.read(EE_SUNRISE_HOUR)) && (rtc.getMinute() >= EEPROM.read(EE_SUNRISE_MINUTE)) && (rtc.getHour() <= 23) && (rtc.getHour() > 0) && (!day) && (rtc.getHour() < EEPROM.read(EE_SUNSET_HOUR)))
+    if ((rtc.getHour() >= EEPROM.read(EE_SUNRISE_HOUR)) && (rtc.getMinute() >= EEPROM.read(EE_SUNRISE_MINUTE)) && (rtc.getHour() < 23) && (rtc.getHour() > 0) && (!day) && (rtc.getHour() < EEPROM.read(EE_SUNSET_HOUR)))
     {
         if (brightInt >= (EEPROM.read(EE_DURATION_SUN) * 60 / 256))
         {
