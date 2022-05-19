@@ -6,6 +6,7 @@
 #include <elapsedMillis.h>
 #include <microDS18B20.h>
 
+
 #define SW 0        //* Кнопка энкодера  pin D0                         // SW
 #define WCNTR 1     // Счетчик расхода воды                            // RELAY_0
 #define DT 2        //* Сигнал энкодера                                 // DT
